@@ -50,12 +50,21 @@ GameManager.prototype.setup = function () {
     this.won         = false;
     this.keepPlaying = false;
 
+    // Add a 2048 tile
+    this.addTile({x: this.size - 1, y: this.size - 1}, 2048);
+
     // Add the initial tiles
     this.addStartTiles();
   }
 
   // Update the actuator
   this.actuate();
+};
+
+// Add a tile
+GameManager.prototype.addTile = function (position, value) {
+  var tile = new Tile(position, value);
+  this.grid.insertTile(tile);
 };
 
 // Set up the initial tiles to start the game with
